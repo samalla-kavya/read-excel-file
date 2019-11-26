@@ -1,18 +1,14 @@
 import React from 'react';
-import FileUpload from "./Components/components/FileUpload"
-import Emp from './Components/components/Emp'
+import FileUpload from "./component/FileUpload";
+import Emp from './component/Emp'
 
-function App(props) {
-  console.log('app his', props);
-
+function App() {
   return (
     <div className="container">
       <FileUpload />
-      <Emp {...props}/>
+      <Emp />
     </div>
   );
 }
 
 export default App;
-
-

@@ -9,7 +9,7 @@ class Emp extends Component {
             <div>
                 <table className="table">
                     <EmpHeader headers={this.props.headers} />
-                    <EmpBody records={this.props.data} {...this.props}/>
+                    <EmpBody records={this.props.data} />
                 </table>
             </div>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import readXlsxFile from 'read-excel-file';
-import { addHeaders, deleteHeaders, addData } from "../action"
+import { addHeaders, deleteHeaders, addData } from '../action';
 import { connect } from "react-redux";
 
 class FileUpload extends Component {
@@ -11,33 +11,13 @@ class FileUpload extends Component {
     handleChange(event) {
         readXlsxFile(event.target.files[0]).then((rows) => {
             console.log('rows', rows);
-            let latestdata=[];
             this.props.deleteHeaders();
             this.props.addHeaders(rows[0]);
             const data = rows.filter((row, index) => {
                 return index > 0;
             });
-                data.forEach(info => {
-                    let obj = {};
-                    info.forEach((rec, index) => {
-                        if (index === 0) {
-                            obj.id = rec;
-                        }
-                        else if (index === 1) {
-                            obj.name = rec;
-                        }
-                        else if (index === 2) {
-                            obj.rollNum = rec;
-                        }
-                        else {
-                            obj.age = rec;
-                        }
-                    });
-                    latestdata.push(obj);
-                    obj = {};
-                });
-            console.log('new Data',latestdata);
-            this.props.addData(latestdata);
+            console.log(data);
+            this.props.addData(data);
         });
     }
     render() {
@@ -46,7 +26,7 @@ class FileUpload extends Component {
                 <form>
                     <div className="form-group">
                         <label
-                            htmlFor="uploadFile">Upload Excel</label>
+                            htmlFor="uploadFile">Upload excel</label>
                         <input
                             type="file"
                             className="form-control-file"
